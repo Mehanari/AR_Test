@@ -6,11 +6,22 @@ function App() {
       <div className="App">
           <a-scene
               vr-mode-ui="enabled: false"
-              arjs='sourceType: webcam;'
-              renderer='antialias: true; alpha: true'>
-              <a-camera gps-camera rotation-reader></a-camera>
-              <a-box gps-entity-place='latitude: 50.489921; longitude: 30.486889' color='red'
-                     scale='20 20 20'></a-box>
+              arjs='sourceType: webcam; debugUIEnabled: false;'>
+              
+              <a-box material="color: red;" scale="25 25 25"
+                     gps-entity-place="latitude: 44.504493; longitude: 11.301134;"></a-box>
+
+              <a-box material="color: yellow;" scale="25 25 25"
+                     gps-entity-place="latitude: 44.506477; longitude: 11.301524;"></a-box>
+              
+              <a-box material="color: green;" scale="25 25 25"
+                     gps-entity-place="latitude: 44.500013; longitude: 11.277351;"></a-box>
+
+              <a-camera
+                  rotation-reader
+                  gps-camera="simulateLatitude: 44.504348; simulateLongitude: 11.301027; minDistance: 50; maxDistance: 700;"
+              >
+              </a-camera>
           </a-scene>
       </div>
   );
