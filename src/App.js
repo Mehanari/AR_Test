@@ -8,10 +8,11 @@ function App() {
               vr-mode-ui="enabled: false"
               arjs='sourceType: webcam;'
               renderer='antialias: true; alpha: true'>
-              <a-box gps-projected-entity-place='latitude: 50.489921; longitude: 30.486889' material='color: red'
-                     scale='10 10 10'></a-box>
-              <a-camera gps-projected-camera
-                        rotation-reader></a-camera>
+              <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
+              <a-entity material='color: red'
+                        geometry='primitive: box'
+                        gps-new-entity-place="latitude: 50.473257; longitude: 30.443317"
+                        scale="10 10 10"></a-entity>
           </a-scene>
       </div>
   );
