@@ -10,8 +10,12 @@ function App() {
               <a-camera gps-new-camera='gpsMinDistance: 150'></a-camera>
               <a-entity material='color: red'
                         geometry='primitive: box'
-                        gps-projected-entity-place="latitude: 50.473257; longitude: 30.443317"
+                        gps-new-entity-place="latitude: 50.473257; longitude: 30.443317"
                         scale="10 10 10"></a-entity>
+              <a-sphere color="yellow"
+                        radius="5"
+                        gps-new-entity-place="latitude: 50.473353; longitude: 30.443280"
+              ></a-sphere>
           </a-scene>
       </div>
   );
