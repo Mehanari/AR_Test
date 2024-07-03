@@ -5,7 +5,7 @@ function App() {
       <div className="App">
           <a-scene
               vr-mode-ui="enabled: false"
-              arjs='sourceType: webcam; videoTexture: true;'
+              arjs='sourceType: webcam;'
               renderer='logarithmicDepthBuffer: true; antialias: true; alpha: true'>
               <a-camera gps-new-camera='gpsMinDistance: 150'></a-camera>
               <a-entity material='color: red'
