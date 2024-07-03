@@ -9,13 +9,9 @@ function App() {
               loading-screen="enabled: false;"
               arjs="sourceType: webcam; debugUIEnabled: false;"
           >
-              <a-entity
-                  position="0 0 0"
-                  scale="1 1 1"
-                  gltf-model="https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"
-                  gps-entity-place="latitude: 50.489923; longitude: 30.486881;"
-              ></a-entity>
-              <a-camera gps-camera rotation-reader></a-camera>
+              <a-camera gps-camera='simulateLatitude: 51.049; simulateLongitude: -0.723' rotation-reader></a-camera>
+              <a-text value="This will always face the user." look-at="[gps-camera]" scale="75 75 75"
+                      gps-entity-place="latitude: 51.0491; longitude: -0.723;"></a-text>
           </a-scene>
       </div>
   );
