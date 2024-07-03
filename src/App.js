@@ -3,22 +3,20 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <div className="App">
+        <a-scene
+            vr-mode-ui="enabled: false"
+            arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <a-text
+              value="This content will always face you."
+              look-at="[gps-camera]"
+              scale="120 120 120"
+              gps-entity-place="latitude: <50,4897373>; longitude: <30,4871598>;"
+          ></a-text>
+          <a-camera gps-camera rotation-reader></a-camera>
+        </a-scene>
+      </div>
   );
 }
 
