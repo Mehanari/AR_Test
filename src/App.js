@@ -10,7 +10,7 @@ function App() {
               <a-camera gps-new-camera='gpsMinDistance: 50'></a-camera>
               <a-entity material='color: red'
                         geometry='primitive: box'
-                        gps-new-entity-place="latitude: 50.473186; longitude: 30.443543"
+                        gps-new-entity-place="latitude: 50.489325; longitude: 30.487905"
                         scale="10 10 10"></a-entity>
               <a-sphere color="yellow"
                         radius="5"
