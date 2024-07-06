@@ -14,7 +14,7 @@ function App() {
         function success(position) {
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
-            setGpsString(`latitude: ${latitude}; longitude: ${longitude}`);
+            setGpsString(`latitude: ${latitude + 0.0001}; longitude: ${longitude + 0.0001}`);
             console.log(`Latitude: ${latitude + 0.001}, Longitude: ${longitude}`);
         }
 
