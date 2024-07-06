@@ -1,39 +1,45 @@
 import './App.css';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 function App() {
+    const [latitude, setLatitude] = useState(0);
+    const [longitude, setLongitude] = useState(0);
+    const offset = 0.0001;
 
-  const [testEntityAdded, setTestEntityAdded] = useState(false);
-  const [logText, setLogText] = useState('No logs yet.');
+    useEffect(() => {
 
-  //gps-camera-update-position handler
-  const onCameraUpdate = e => {
-      alert('onCameraUpdate')
-      if(!testEntityAdded) {
-          setLogText(`Got first GPS position: lon ${e.detail.position.longitude} lat ${e.detail.position.latitude}`);
-          // Add a box to the north of the initial GPS position
-          const entity = document.createElement("a-box");
-          entity.setAttribute("scale", "1 1 1");
-          entity.setAttribute('material', 'color: red');
-          entity.setAttribute('gps-new-entity-place',
-                `latitude: ${e.detail.position.latitude + 0.001}; longitude: ${e.detail.position.longitude}`);
-          document.querySelector("a-scene").appendChild(entity);
-          setTestEntityAdded(true);
-      }
-  }
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(success, error);
+        } else {
+            console.log("Geolocation not supported");
+        }
 
-  return (
+        function success(position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+            setLatitude(latitude + offset);
+            setLongitude(longitude + offset);
+        }
+
+        function error() {
+            console.log("Unable to retrieve your location");
+        }
+    });
+
+    return (
       <div className="App">
           <a-scene
               vr-mode-ui="enabled: false"
-              arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false; '
+              arjs='sourceType: webcam;  debugUIEnabled: false; '
               renderer='logarithmicDepthBuffer: true; antialias: true; alpha: true'>
-              <a-text value={logText} position="-0.5 0.5 -1" align="center"></a-text>
-              <a-camera gps-new-camera='gpsMinDistance: 50' gps-camera-update-position={onCameraUpdate}></a-camera>
-
+              <a-camera gps-new-camera='gpsMinDistance: 50'></a-camera>
+              <a-box material='color: yellow;'
+                     gps-entity-place={'latitude: ' + latitude + '; longitude: ' + longitude}></a-box>
+              <a-box material='color: red;' gps-new-entity-place='latitude: 50.4789968; longitude: 30.4349872'></a-box>
           </a-scene>
       </div>
-  );
+    );
 }
 
 export default App;
