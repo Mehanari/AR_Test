@@ -7,7 +7,7 @@ function App() {
                  renderer='antialias: true; alpha: true'>
             <a-camera gps-new-camera='gpsMinDistance: 150'></a-camera>
             <a-entity material='color: red' geometry='primitive: box'
-                      gps-entity-place="latitude: 50.478997; longitude: 30.434987" scale="10 10 10"></a-entity>
+                      gps-new-entity-place="latitude: 50.478997; longitude: 30.434987" scale="10 10 10"></a-entity>
         </a-scene>
     );
 }
