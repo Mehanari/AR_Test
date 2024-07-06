@@ -5,11 +5,16 @@ function App() {
     const [gpsString, setGpsString] = useState("")
 
     useEffect(() => {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(success, error);
-        } else {
-            console.log("Geolocation not supported");
-        }
+
+        navigator.permissions.query({ name: "geolocation" }).then((result) => {
+            if (result.state === "granted") {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(success, error);
+                } else {
+                    console.log("Geolocation not supported");
+                }
+            }
+        });
 
         function success(position) {
             const latitude = position.coords.latitude;
